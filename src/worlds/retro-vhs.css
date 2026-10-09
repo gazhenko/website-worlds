@@ -1,0 +1,222 @@
+.w-retro-vhs {
+  --ink: #f1ecff;
+  --osd: #ffffff;
+  --ww-focus: #8fb0ff;
+  background:
+    radial-gradient(70% 60% at 40% 40%, rgb(79 124 255 / 0.14), transparent 70%),
+    linear-gradient(180deg, #19171f, #0d0c11);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Arial, system-ui, sans-serif;
+}
+
+.w-retro-vhs .w-vhs__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 360px);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: min(1240px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.w-retro-vhs .w-vhs__tv {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 16px;
+  padding: clamp(14px, 2.5vw, 26px);
+  border-radius: 28px;
+  background: linear-gradient(160deg, #4a3a2c, #2c2219 60%, #1d1610);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), inset 0 -6px 14px rgb(0 0 0 / 0.5), 0 30px 60px rgb(0 0 0 / 0.6);
+}
+
+.w-retro-vhs .w-vhs__screen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px / 26px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: inset 0 0 0 6px #111, 0 0 0 3px #0a0a0a;
+}
+
+.w-retro-vhs .w-vhs__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  filter: saturate(1.15) contrast(1.05) blur(0.35px);
+}
+
+.w-retro-vhs .w-vhs__fallback {
+  background: #2141c8;
+  color: #fff;
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.w-retro-vhs .w-vhs__scan {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.28) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% 50%, transparent 60%, rgb(0 0 0 / 0.55) 100%);
+  box-shadow: inset 0 0 60px rgb(0 0 0 / 0.6);
+  pointer-events: none;
+}
+
+.w-retro-vhs .w-vhs__osd {
+  position: absolute;
+  inset: 0;
+  padding: 6% 7%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  color: var(--osd);
+  font-family: 'VCR OSD Mono', ui-monospace, 'Courier New', monospace;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.3vw, 1.35rem);
+  letter-spacing: 0.06em;
+  text-shadow: 2px 2px 0 rgb(0 0 0 / 0.75), -1px 0 0 rgb(255 60 120 / 0.5), 1px 0 0 rgb(60 200 255 / 0.5);
+  pointer-events: none;
+}
+
+.w-retro-vhs .w-vhs__osd-sp {
+  justify-self: end;
+}
+
+.w-retro-vhs .w-vhs__osd-ch {
+  grid-row: 3;
+  align-self: end;
+}
+
+.w-retro-vhs .w-vhs__osd-tc {
+  grid-row: 3;
+  grid-column: 2;
+  align-self: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.w-retro-vhs .w-vhs__knobs {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 14px;
+  padding-top: 10px;
+}
+
+.w-retro-vhs .w-vhs__knobs span {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8a7a66, #2b221a 70%);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.5), inset 0 0 0 3px #1a140f;
+  position: relative;
+}
+
+.w-retro-vhs .w-vhs__knobs span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 3px;
+  height: 14px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: #e6dccb;
+}
+
+.w-retro-vhs .w-vhs__knobs i {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: #120e0a;
+}
+
+.w-retro-vhs .w-vhs__panel {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: 6px;
+  background: #f4f1e8;
+  color: #1b1a22;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.45);
+  transform: rotate(-1deg);
+}
+
+.w-retro-vhs .w-vhs__label {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid #1b1a22;
+  font-family: 'Marker Felt', 'Bradley Hand', 'Comic Sans MS', cursive;
+  font-size: 0.95rem;
+  background: repeating-linear-gradient(0deg, transparent 0 22px, rgb(30 60 160 / 0.2) 22px 23px);
+}
+
+.w-retro-vhs .w-vhs__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #1d3fd1;
+  text-shadow: 3px 3px 0 #ff4fa3;
+}
+
+.w-retro-vhs .w-vhs__caption {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.w-retro-vhs .w-vhs__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-retro-vhs .w-vhs__controls button {
+  padding: 0 0.9rem;
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(#3b3a44, #1b1a22);
+  color: #f4f1e8;
+  font-family: ui-monospace, Menlo, monospace;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 #000, inset 0 1px 0 rgb(255 255 255 / 0.15);
+}
+
+.w-retro-vhs .w-vhs__controls button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000;
+}
+
+.w-retro-vhs .w-vhs__controls button:focus-visible {
+  outline-color: #1d3fd1;
+}
+
+.w-retro-vhs .w-vhs__status {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+  color: #2b2a36;
+}
+
+@media (max-width: 900px) {
+  .w-retro-vhs .w-vhs__layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+  .w-retro-vhs .w-vhs__panel {
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .w-retro-vhs .w-vhs__tv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .w-retro-vhs .w-vhs__knobs {
+    display: none;
+  }
+}

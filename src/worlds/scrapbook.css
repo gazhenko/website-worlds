@@ -1,0 +1,493 @@
+.w-scrapbook {
+  --ink: #2f241b;
+  --hand: 'Bradley Hand', 'Segoe Print', 'Chalkboard SE', 'Comic Sans MS', cursive;
+  --type: 'American Typewriter', 'Courier New', ui-monospace, monospace;
+  --tape-a: #ff9ec7;
+  --tape-b: #fff2f7;
+  --ww-focus: #1d3fbf;
+  background-color: #c79f75;
+  background-image:
+    radial-gradient(rgb(90 60 30 / 0.22) 1px, transparent 1.5px),
+    radial-gradient(rgb(255 240 210 / 0.25) 1px, transparent 1.5px),
+    linear-gradient(135deg, #c9a27a, #b98d62);
+  background-size: 7px 7px, 11px 11px, 100% 100%;
+  background-position: 0 0, 3px 5px, 0 0;
+  color: var(--ink);
+  font-family: var(--type);
+}
+
+.w-scrapbook[data-tape='stripes'] {
+  --tape-a: #9fd8c4;
+  --tape-b: #f4fff9;
+}
+
+.w-scrapbook[data-tape='grid'] {
+  --tape-a: #8fb3ff;
+  --tape-b: #f2f6ff;
+}
+
+.w-scrapbook .w-scrap__doodles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  fill: none;
+  stroke: #3a2a1e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.w-scrapbook .w-scrap__board {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    'title pol1 pol2'
+    'title note ticket'
+    'ctrl note flower'
+    'ctrl sticky flower';
+  gap: clamp(1rem, 2.4vw, 2rem);
+  align-items: start;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 1rem) clamp(1rem, 4vw, 3rem) 3rem;
+}
+
+.w-scrapbook .w-scrap__piece {
+  position: relative;
+  z-index: var(--z, 1);
+  transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(var(--r, 0deg));
+  transition: transform 0.6s cubic-bezier(0.3, 1.3, 0.5, 1);
+  filter: drop-shadow(2px 5px 6px rgb(60 35 15 / 0.35));
+}
+
+.w-scrapbook .w-scrap__sway {
+  transform-origin: 50% 0;
+  animation: w-scrap-sway 7s ease-in-out infinite;
+}
+
+.w-scrapbook .w-scrap__polaroid--b {
+  animation-delay: -3s;
+  animation-duration: 8.5s;
+}
+
+@keyframes w-scrap-sway {
+  0%,
+  100% {
+    rotate: -1.2deg;
+  }
+  50% {
+    rotate: 1.2deg;
+  }
+}
+
+/* Washi tape */
+.w-scrapbook .w-scrap__tape {
+  position: absolute;
+  z-index: 3;
+  width: 92px;
+  height: 26px;
+  opacity: 0.82;
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+  background-color: var(--tape-b);
+  background-image: radial-gradient(var(--tape-a) 3px, transparent 3.5px);
+  background-size: 12px 12px;
+}
+
+.w-scrapbook[data-tape='stripes'] .w-scrap__tape {
+  background-image: repeating-linear-gradient(45deg, var(--tape-a) 0 7px, var(--tape-b) 7px 14px);
+  background-size: auto;
+}
+
+.w-scrapbook[data-tape='grid'] .w-scrap__tape {
+  background-image:
+    linear-gradient(var(--tape-a) 2px, transparent 2px),
+    linear-gradient(90deg, var(--tape-a) 2px, transparent 2px);
+  background-size: 9px 9px;
+}
+
+.w-scrapbook .w-scrap__tape--tl {
+  left: -18px;
+  top: 6px;
+  transform: rotate(-32deg);
+}
+
+.w-scrapbook .w-scrap__tape--top {
+  left: 50%;
+  top: -12px;
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.w-scrapbook .w-scrap__tape--diag {
+  right: -16px;
+  top: 4px;
+  transform: rotate(38deg);
+}
+
+/* Title scrap */
+.w-scrapbook .w-scrap__title {
+  grid-area: title;
+}
+
+.w-scrapbook .w-scrap__paper {
+  padding: 1.6rem 1.4rem 1.8rem 3rem;
+  background: #fffdf6;
+}
+
+.w-scrapbook .w-scrap__lined {
+  background-image:
+    linear-gradient(90deg, transparent 2.1rem, #e98a8a 2.1rem, #e98a8a calc(2.1rem + 2px), transparent calc(2.1rem + 2px)),
+    repeating-linear-gradient(transparent 0 1.55rem, #b7cde6 1.55rem calc(1.55rem + 1px));
+}
+
+.w-scrapbook .w-scrap__date {
+  font-family: var(--hand);
+  font-size: 1rem;
+  color: #6b4f3a;
+}
+
+.w-scrapbook .w-scrap__h1 {
+  margin: 0.5rem 0 0.9rem;
+  line-height: 1;
+}
+
+.w-scrapbook .w-scrap__letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.w-scrapbook .w-scrap__letter {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.05em;
+  padding: 0.08em 0.14em;
+  font-size: clamp(2rem, 6.5vw, 3.6rem);
+  transform: rotate(var(--lr));
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 0.25);
+}
+
+.w-scrapbook .w-scrap__letter--a {
+  background: #1f1f1f;
+  color: #fff8e8;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+}
+.w-scrapbook .w-scrap__letter--b {
+  background: #ffd84d;
+  color: #1f1f1f;
+  font-family: 'Arial Black', Impact, sans-serif;
+}
+.w-scrapbook .w-scrap__letter--c {
+  background: #fff;
+  color: #c0392b;
+  font-family: var(--type);
+  font-weight: 700;
+}
+.w-scrapbook .w-scrap__letter--d {
+  background: #7fb6d9;
+  color: #10233a;
+  font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+}
+.w-scrapbook .w-scrap__letter--e {
+  background: #f2a7bf;
+  color: #3a0f1f;
+  font-family: var(--hand);
+  font-weight: 700;
+}
+
+.w-scrapbook .w-scrap__caption {
+  font-family: var(--hand);
+  font-size: 1.08rem;
+  line-height: 1.55rem;
+  color: #2a2016;
+}
+
+/* Polaroids */
+.w-scrapbook .w-scrap__polaroid {
+  grid-area: pol1;
+  padding: 0.7rem 0.7rem 0;
+  background: #fffdf6;
+}
+
+.w-scrapbook .w-scrap__polaroid--b {
+  grid-area: pol2;
+}
+
+.w-scrapbook .w-scrap__polaroid svg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+}
+
+.w-scrapbook .w-scrap__polaroid figcaption {
+  padding: 0.6rem 0.2rem 0.9rem;
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Flip note */
+.w-scrapbook .w-scrap__note-wrap {
+  grid-area: note;
+  perspective: 900px;
+  /* filters flatten 3D; the faces carry their own shadow instead */
+  filter: none;
+}
+
+.w-scrapbook .w-scrap__pin {
+  position: absolute;
+  z-index: 3;
+  top: -8px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff8a8a, #b3261e 70%);
+  box-shadow: 1px 2px 2px rgb(0 0 0 / 0.4);
+}
+
+.w-scrapbook .w-scrap__note {
+  position: relative;
+  display: grid;
+  min-height: 210px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 1.4, 0.5, 1);
+}
+
+.w-scrapbook .w-scrap__note[data-side='back'] {
+  transform: rotateY(180deg);
+}
+
+.w-scrapbook .w-scrap__face {
+  grid-area: 1 / 1;
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 1.2rem 1rem;
+  background:
+    linear-gradient(#e86a6a, #e86a6a) 0 2.6rem / 100% 2px no-repeat,
+    repeating-linear-gradient(transparent 0 1.6rem, #b7cde6 1.6rem calc(1.6rem + 1px)) 0 2.7rem / 100% calc(100% - 2.7rem) no-repeat,
+    #fffefa;
+  box-shadow: 2px 5px 8px rgb(60 35 15 / 0.35);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.w-scrapbook .w-scrap__face--back {
+  transform: rotateY(180deg);
+  background-color: #eef7ff;
+}
+
+.w-scrapbook .w-scrap__note-label {
+  font-family: var(--type);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a5a3a;
+}
+
+.w-scrapbook .w-scrap__note-text {
+  font-family: var(--hand);
+  font-size: 1.15rem;
+  line-height: 1.6rem;
+}
+
+.w-scrapbook .w-scrap__note-hint {
+  font-family: var(--hand);
+  font-size: 0.9rem;
+  color: #6b4f3a;
+}
+
+/* Ticket */
+.w-scrapbook .w-scrap__ticket {
+  grid-area: ticket;
+  display: flex;
+  background:
+    radial-gradient(circle at 0 50%, transparent 9px, #ff7b5c 9.5px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 9px, #ff7b5c 9.5px) right / 51% 100% no-repeat;
+  color: #2b0f08;
+  font-family: var(--type);
+}
+
+.w-scrapbook .w-scrap__ticket-main {
+  display: grid;
+  gap: 0.2rem;
+  flex: 1;
+  padding: 0.9rem 1rem 0.9rem 1.4rem;
+  font-size: 0.82rem;
+}
+
+.w-scrapbook .w-scrap__ticket-main strong {
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+}
+
+.w-scrapbook .w-scrap__ticket-stub {
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+  border-left: 2px dashed #2b0f08;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Pressed flower */
+.w-scrapbook .w-scrap__flower {
+  grid-area: flower;
+  justify-self: center;
+  width: min(200px, 100%);
+  padding: 1rem 1rem 0.6rem;
+  background: #f6f0df;
+}
+
+.w-scrapbook .w-scrap__flower svg {
+  width: 100%;
+  height: auto;
+}
+
+.w-scrapbook .w-scrap__flower-label {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--hand);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Sticky note with fluttering corner */
+.w-scrapbook .w-scrap__sticky {
+  grid-area: sticky;
+  justify-self: start;
+  width: min(190px, 100%);
+  padding: 1rem 0.9rem 1.4rem;
+  background: linear-gradient(170deg, #fff7a1, #f7e76a);
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  transform-origin: 50% 0;
+}
+
+.w-scrapbook .w-scrap__sticky::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #e8d75a 50%, transparent 50%);
+  transform-origin: 100% 100%;
+  animation: w-scrap-curl 3.4s ease-in-out infinite;
+}
+
+@keyframes w-scrap-curl {
+  0%,
+  100% {
+    transform: rotateX(0) scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+/* Controls as paper tags */
+.w-scrapbook .w-scrap__ctrl {
+  grid-area: ctrl;
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  background: #efe1c6;
+  border: 1px dashed #9b7b54;
+}
+
+.w-scrapbook .w-scrap__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.w-scrapbook .w-scrap__tag {
+  position: relative;
+  min-height: 46px;
+  padding: 0 1rem 0 1.7rem;
+  border: 1px solid #9b7b54;
+  border-radius: 4px 14px 14px 4px;
+  background: #fffdf6;
+  color: var(--ink);
+  font-family: var(--hand);
+  font-size: 1.02rem;
+  font-weight: 700;
+  box-shadow: 1px 2px 3px rgb(60 35 15 / 0.3);
+  transition: transform 0.2s ease;
+}
+
+.w-scrapbook .w-scrap__tag::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  border: 2px solid #9b7b54;
+  background: #c79f75;
+}
+
+.w-scrapbook .w-scrap__tag:hover {
+  transform: rotate(-2deg) translateY(-1px);
+}
+
+.w-scrapbook .w-scrap__tag[aria-pressed='true'] {
+  background: #fff2a8;
+}
+
+.w-scrapbook .w-scrap__status {
+  justify-self: start;
+  padding: 0.35rem 0.7rem;
+  background: #1c1c1c;
+  color: #f7f7f7;
+  font-family: var(--type);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2);
+}
+
+@media (max-width: 860px) {
+  .w-scrapbook .w-scrap__board {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'title title'
+      'ctrl ctrl'
+      'pol1 pol2'
+      'note note'
+      'ticket ticket'
+      'flower sticky';
+  }
+}
+
+@media (max-width: 520px) {
+  .w-scrapbook .w-scrap__board {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'title'
+      'ctrl'
+      'pol1'
+      'note'
+      'pol2'
+      'ticket'
+      'flower'
+      'sticky';
+  }
+  .w-scrapbook .w-scrap__paper {
+    padding-left: 2.8rem;
+  }
+  .w-scrapbook .w-scrap__polaroid {
+    width: 86%;
+    justify-self: center;
+  }
+}

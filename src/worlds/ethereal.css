@@ -1,0 +1,118 @@
+.w-ethereal {
+  --ink: #3a3462;
+  --soft: #4d4778;
+  --veil: rgb(255 255 255 / 0.42);
+  --line: rgb(58 52 98 / 0.35);
+  --ww-focus: #3a3462;
+  background: linear-gradient(#e3dcff, #fbe9f1, #e2f6ef);
+  color: var(--ink);
+  font-family: Optima, 'Candara', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+
+.w-ethereal[data-hour='dusk'] {
+  --ink: #2c1f3e;
+  --soft: #3d2c50;
+  --veil: rgb(255 240 246 / 0.5);
+  --ww-focus: #2c1f3e;
+}
+
+.w-ethereal[data-hour='moonlit'] {
+  --ink: #f1f3ff;
+  --soft: #dfe3ff;
+  --veil: rgb(13 16 48 / 0.45);
+  --line: rgb(241 243 255 / 0.45);
+  --ww-focus: #ffffff;
+}
+
+.w-ethereal .w-eth__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.w-ethereal .w-eth__veil {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 1.1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 1rem) 1.25rem 3rem;
+  text-align: center;
+}
+
+.w-ethereal .w-eth__kicker {
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--soft);
+}
+
+.w-ethereal .w-eth__title {
+  font-size: clamp(1.9rem, 8vw, 5rem);
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-right: -0.32em;
+  text-shadow: 0 0 30px rgb(255 255 255 / 0.7);
+  animation: w-eth-float 9s ease-in-out infinite;
+}
+
+.w-ethereal[data-hour='moonlit'] .w-eth__title {
+  text-shadow: 0 0 30px rgb(150 170 255 / 0.6);
+}
+
+@keyframes w-eth-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.w-ethereal .w-eth__caption {
+  max-width: 34rem;
+  padding: 1rem 1.3rem;
+  border-radius: 999px / 60px;
+  background: var(--veil);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.w-ethereal .w-eth__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.w-ethereal .w-eth__controls button {
+  padding: 0 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--veil);
+  color: var(--ink);
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.w-ethereal .w-eth__controls button:hover,
+.w-ethereal .w-eth__controls button[aria-pressed='true'] {
+  box-shadow: 0 0 24px rgb(255 255 255 / 0.85);
+}
+
+.w-ethereal .w-eth__status {
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  color: var(--soft);
+}

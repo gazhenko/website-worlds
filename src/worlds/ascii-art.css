@@ -1,0 +1,130 @@
+.w-ascii-art {
+  --paper: #efe6d2;
+  --ink: #2a241c;
+  --rule: #b9ab8e;
+  --ww-focus: #2a241c;
+  background:
+    repeating-linear-gradient(0deg, rgb(120 100 70 / 0.05) 0 1px, transparent 1px 28px),
+    radial-gradient(120% 100% at 50% 0%, #f6efdf, #e4d8bd);
+  color: var(--ink);
+  font-family: 'American Typewriter', 'Courier New', ui-monospace, monospace;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.w-ascii-art[data-ink='dark'] {
+  --paper: #12110f;
+  --ink: #ebe4d2;
+  --rule: #5b5446;
+  --ww-focus: #ffd98a;
+  background: radial-gradient(120% 100% at 50% 0%, #1f1c17, #0b0a08);
+}
+
+.w-ascii-art .w-ascii__layout {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  width: min(1200px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.25rem;
+}
+
+.w-ascii-art .w-ascii__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  gap: 0.3rem 1.5rem;
+}
+
+.w-ascii-art .w-ascii__kicker {
+  grid-column: 1 / -1;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.w-ascii-art .w-ascii__title {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.w-ascii-art .w-ascii__caption {
+  max-width: 60ch;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.w-ascii-art .w-ascii__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 46vh;
+  padding: 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.4) inset, 0 14px 30px rgb(60 40 10 / 0.18);
+  overflow: hidden;
+}
+
+.w-ascii-art .w-ascii__pre {
+  margin: 0;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-size: clamp(8px, 1.15vw, 14px);
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: var(--ink);
+  white-space: pre;
+  user-select: none;
+}
+
+.w-ascii-art .w-ascii__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.w-ascii-art .w-ascii__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.w-ascii-art .w-ascii__controls button {
+  padding: 0 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.92rem;
+}
+
+.w-ascii-art .w-ascii__controls button:hover,
+.w-ascii-art .w-ascii__controls button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.w-ascii-art .w-ascii__status {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 700px) {
+  .w-ascii-art .w-ascii__head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .w-ascii-art .w-ascii__pre {
+    font-size: 8px;
+  }
+  .w-ascii-art .w-ascii__frame {
+    min-height: 44vh;
+  }
+}

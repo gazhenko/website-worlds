@@ -1,0 +1,112 @@
+.w-wireframe-3d {
+  --cyan: #5cf2ff;
+  --ink: #e6fbff;
+  --ww-focus: #5cf2ff;
+  background: #05060a;
+  color: var(--ink);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.w-wireframe-3d .w-wire__view {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.w-wireframe-3d .w-wire__view:active {
+  cursor: grabbing;
+}
+
+.w-wireframe-3d .w-wire__view:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: -8px;
+}
+
+.w-wireframe-3d .w-wire__canvas {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.w-wireframe-3d .w-wire__readout {
+  position: absolute;
+  right: clamp(0.75rem, 3vw, 2rem);
+  top: calc(var(--ww-hud-space) + 0.5rem);
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgb(92 242 255 / 0.4);
+  background: rgb(5 6 10 / 0.7);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  pointer-events: none;
+}
+
+.w-wireframe-3d .w-wire__panel {
+  position: absolute;
+  right: clamp(0.75rem, 3vw, 2.5rem);
+  bottom: clamp(0.75rem, 3vw, 2.5rem);
+  z-index: 1;
+  display: grid;
+  gap: 0.7rem;
+  width: min(390px, calc(100% - 1.5rem));
+  padding: 1rem 1.15rem;
+  border: 1px solid rgb(92 242 255 / 0.45);
+  background:
+    linear-gradient(rgb(92 242 255 / 0.06) 1px, transparent 1px) 0 0 / 100% 12px,
+    rgb(5 6 10 / 0.85);
+}
+
+.w-wireframe-3d .w-wire__kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+}
+
+.w-wireframe-3d .w-wire__title {
+  font-family: 'Helvetica Neue', 'Avenir Next', system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.w-wireframe-3d .w-wire__caption {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #cdeef5;
+}
+
+.w-wireframe-3d .w-wire__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-wireframe-3d .w-wire__controls button {
+  padding: 0 0.85rem;
+  border: 1px solid var(--cyan);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.78rem;
+}
+
+.w-wireframe-3d .w-wire__controls button:hover,
+.w-wireframe-3d .w-wire__controls button[aria-pressed='true'] {
+  background: rgb(92 242 255 / 0.18);
+}
+
+.w-wireframe-3d .w-wire__status {
+  font-size: 0.76rem;
+  color: var(--cyan);
+}
+
+@media (max-width: 600px) {
+  .w-wireframe-3d .w-wire__readout {
+    left: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.66rem;
+  }
+}

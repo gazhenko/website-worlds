@@ -1,0 +1,489 @@
+.w-comic-book {
+  --ink: #111111;
+  --paper: #fff8e7;
+  --yellow: #ffd400;
+  --red: #e8212b;
+  --blue: #1f6fd1;
+  --teal: #19a7a0;
+  --skin: #ffcf9e;
+  --sky-a: #ffb24d;
+  --sky-b: #ff6f91;
+  --dot: #ffe0a3;
+  --letter: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', cursive;
+  --ww-focus: #1f3fd1;
+  background-color: #f2e6c9;
+  background-image: radial-gradient(rgb(232 33 43 / 0.12) 1.4px, transparent 1.6px);
+  background-size: 10px 10px;
+  color: var(--ink);
+  font-family: var(--letter);
+}
+
+.w-comic-book[data-tint='night'] {
+  --sky-a: #2a2f7a;
+  --sky-b: #7a3fa0;
+  --dot: #6f78d9;
+}
+
+.w-comic-book[data-tint='dawn'] {
+  --sky-a: #9fd8ff;
+  --sky-b: #ffe2a8;
+  --dot: #ffffff;
+}
+
+.w-comic-book .w-comic__wrap {
+  display: grid;
+  gap: 1rem;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.6rem, 3vw, 2rem) 1.5rem;
+}
+
+.w-comic-book .w-comic__mast {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.w-comic-book .w-comic__title {
+  font-family: Impact, 'Arial Black', 'Haettenschweiler', sans-serif;
+  font-size: clamp(2.4rem, 8vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--red);
+  transform: rotate(-2deg);
+}
+
+.w-comic-book .w-comic__issue {
+  display: flex;
+  gap: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.w-comic-book .w-comic__issue span {
+  padding: 0.2rem 0.6rem;
+  border: 3px solid var(--ink);
+  background: #fff;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.w-comic-book .w-comic__page {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  padding: 10px;
+  background: #fff;
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 rgb(0 0 0 / 0.2);
+}
+
+.w-comic-book .w-comic__panel {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  min-height: 0;
+}
+
+.w-comic-book .w-comic__panel svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 300 / 260;
+}
+
+.w-comic-book .w-comic__panel--wide svg {
+  aspect-ratio: 600 / 260;
+}
+
+.w-comic-book .is-turning .w-comic__panel {
+  animation: w-comic-in 0.55s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+
+.w-comic-book .is-turning .w-comic__panel:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.w-comic-book .is-turning .w-comic__panel:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.w-comic-book .is-turning .w-comic__panel:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+@keyframes w-comic-in {
+  from {
+    transform: translateY(16px) rotate(-1deg) scale(0.96);
+    opacity: 0;
+  }
+}
+
+.w-comic-book .w-comic__sky-a {
+  stop-color: var(--sky-a);
+}
+.w-comic-book .w-comic__sky-b {
+  stop-color: var(--sky-b);
+}
+.w-comic-book .w-comic__dot {
+  fill: var(--dot);
+}
+.w-comic-book .w-comic__moon {
+  fill: #fff6cf;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.w-comic-book .w-comic__clouds path {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 3;
+  animation: w-comic-cloud 14s linear infinite alternate;
+}
+
+@keyframes w-comic-cloud {
+  to {
+    transform: translateX(40px);
+  }
+}
+
+.w-comic-book .w-comic__city path {
+  fill: #2b1b4a;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.w-comic-book .w-comic__windows rect {
+  fill: #ffe066;
+}
+
+.w-comic-book .w-comic__speed path {
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 60 30;
+  animation: w-comic-speed 0.6s linear infinite;
+}
+
+@keyframes w-comic-speed {
+  to {
+    stroke-dashoffset: 90;
+  }
+}
+
+.w-comic-book .w-comic__cape {
+  fill: var(--red);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__suit {
+  fill: var(--teal);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__arm {
+  fill: var(--teal);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__glove {
+  fill: var(--yellow);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__skin {
+  fill: var(--skin);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__hair {
+  fill: #3a1d10;
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.w-comic-book .w-comic__mask {
+  fill: var(--red);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.w-comic-book .w-comic__belt {
+  stroke: var(--yellow);
+  stroke-width: 4;
+}
+
+.w-comic-book .w-comic__caption-box {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  max-width: 58%;
+  padding: 0.4rem 0.6rem;
+  border: 3px solid var(--ink);
+  background: var(--yellow);
+  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.w-comic-book .w-comic__face-bg {
+  fill: var(--yellow);
+}
+
+.w-comic-book .w-comic__rays {
+  stroke: #ff9f1c;
+  stroke-width: 6;
+}
+
+.w-comic-book .w-comic__face {
+  animation: w-comic-nod 2.4s ease-in-out infinite;
+  transform-origin: 150px 200px;
+}
+
+@keyframes w-comic-nod {
+  50% {
+    transform: rotate(2deg) translateY(-2px);
+  }
+}
+
+.w-comic-book .w-comic__expr {
+  display: none;
+}
+
+.w-comic-book[data-expression='determined'] .w-comic__expr--determined,
+.w-comic-book[data-expression='surprised'] .w-comic__expr--surprised,
+.w-comic-book[data-expression='laughing'] .w-comic__expr--laughing {
+  display: inline;
+}
+
+.w-comic-book .w-comic__brow {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.w-comic-book .w-comic__eye {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.w-comic-book .w-comic__mouth {
+  fill: #7a1f1f;
+  stroke: var(--ink);
+  stroke-width: 4;
+}
+.w-comic-book .w-comic__mouth-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.w-comic-book .w-comic__balloon,
+.w-comic-book .w-comic__thought {
+  position: absolute;
+  max-width: 78%;
+  padding: 0.55rem 0.8rem;
+  border: 3px solid var(--ink);
+  border-radius: 50% / 40%;
+  background: #fff;
+  font-size: clamp(0.72rem, 1.6vw, 0.98rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.w-comic-book .w-comic__balloon {
+  right: 8px;
+  top: 8px;
+}
+
+.w-comic-book .w-comic__balloon::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  bottom: -18px;
+  border: 10px solid transparent;
+  border-top: 16px solid var(--ink);
+  transform: skewX(18deg);
+}
+
+.w-comic-book .w-comic__thought {
+  left: 8px;
+  top: 8px;
+  border-radius: 40px;
+}
+
+.w-comic-book .w-comic__thought::after {
+  content: '';
+  position: absolute;
+  right: 26%;
+  bottom: -22px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 14px 14px 0 -4px #fff, 14px 14px 0 -1px var(--ink);
+}
+
+.w-comic-book .is-turning .w-comic__balloon,
+.w-comic-book .is-turning .w-comic__thought,
+.w-comic-book .is-turning .w-comic__caption-box {
+  animation: w-comic-type 1.1s steps(18) backwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes w-comic-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 -20% -40% 0);
+  }
+}
+
+.w-comic-book .w-comic__night {
+  fill: #1c1f4a;
+}
+.w-comic-book .w-comic__roof {
+  fill: #7a2f2f;
+  stroke: var(--ink);
+  stroke-width: 4;
+}
+.w-comic-book .w-comic__chimney {
+  fill: #a8412a;
+  stroke: var(--ink);
+  stroke-width: 4;
+}
+.w-comic-book .w-comic__cat {
+  fill: #111;
+}
+.w-comic-book .w-comic__cat-eye {
+  fill: var(--yellow);
+}
+
+.w-comic-book .w-comic__tail {
+  fill: none;
+  stroke: #111;
+  stroke-width: 9;
+  stroke-linecap: round;
+  transform-origin: 178px 184px;
+  animation: w-comic-tail 2.2s ease-in-out infinite;
+}
+
+@keyframes w-comic-tail {
+  50% {
+    transform: rotate(-16deg);
+  }
+}
+
+.w-comic-book .w-comic__sfx-bg {
+  fill: var(--blue);
+}
+.w-comic-book .w-comic__action {
+  stroke: #fff;
+  stroke-width: 3;
+  opacity: 0.55;
+}
+
+.w-comic-book .w-comic__burst {
+  transform-origin: 150px 130px;
+  animation: w-comic-throb 2.6s ease-in-out infinite;
+}
+
+.w-comic-book .w-comic__burst.is-pop {
+  animation: w-comic-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both, w-comic-throb 2.6s ease-in-out 0.5s infinite;
+}
+
+@keyframes w-comic-throb {
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+@keyframes w-comic-pop {
+  from {
+    transform: scale(0.3) rotate(-25deg);
+  }
+}
+
+.w-comic-book .w-comic__burst-shape {
+  fill: var(--yellow);
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+
+.w-comic-book .w-comic__sfx {
+  fill: var(--red);
+  stroke: var(--ink);
+  stroke-width: 3;
+  paint-order: stroke;
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 46px;
+  letter-spacing: 1px;
+}
+
+.w-comic-book .w-comic__letters {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.2rem;
+  border: 3px solid var(--ink);
+  background: #fff;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.w-comic-book .w-comic__caption {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.w-comic-book .w-comic__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.w-comic-book .w-comic__controls button {
+  padding: 0 1.1rem;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--letter);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.w-comic-book .w-comic__controls button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.w-comic-book .w-comic__status {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .w-comic-book .w-comic__page {
+    grid-template-columns: 1fr 1fr;
+  }
+  .w-comic-book .w-comic__panel--wide {
+    grid-column: 1 / -1;
+  }
+  .w-comic-book .w-comic__panel--sfx {
+    grid-column: 1 / -1;
+  }
+  .w-comic-book .w-comic__panel--sfx svg {
+    aspect-ratio: 600 / 260;
+  }
+}

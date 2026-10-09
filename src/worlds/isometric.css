@@ -1,0 +1,263 @@
+.w-isometric {
+  --ink: #1f2a33;
+  --muted: #3b4a55;
+  --ww-focus: #1f2a33;
+  background: linear-gradient(180deg, #bfe3f2 0%, #e8f5fa 60%, #f6efe2 100%);
+  color: var(--ink);
+  font-family: 'Avenir Next', 'Futura', 'Segoe UI', system-ui, sans-serif;
+  transition: background 0.8s ease;
+}
+
+.w-isometric[data-night='true'] {
+  --ink: #eef4ff;
+  --muted: #c9d6e8;
+  --ww-focus: #ffd66b;
+  background: linear-gradient(180deg, #0b1230 0%, #18224a 60%, #241f3d 100%);
+}
+
+.w-isometric .w-iso__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: min(1240px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.w-isometric .w-iso__panel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.w-isometric .w-iso__kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.w-isometric .w-iso__title {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transform: skewY(-6deg);
+  transform-origin: left;
+}
+
+.w-isometric .w-iso__caption {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.w-isometric .w-iso__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.w-isometric .w-iso__controls button {
+  padding: 0 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.w-isometric .w-iso__controls button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.w-isometric .w-iso__controls button[aria-pressed='true'] {
+  background: var(--ink);
+  color: #0b1230;
+}
+
+.w-isometric[data-night='true'] .w-iso__controls button[aria-pressed='true'] {
+  background: #ffd66b;
+  border-color: #ffd66b;
+  box-shadow: 4px 4px 0 #ffd66b55;
+}
+
+.w-isometric .w-iso__status {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.w-isometric .w-iso__stage {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.w-isometric .w-iso__svg {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - var(--ww-hud-space) - 2rem);
+  max-height: calc(100dvh - var(--ww-hud-space) - 2rem);
+  overflow: visible;
+  animation: w-iso-float 7s ease-in-out infinite;
+}
+
+@keyframes w-iso-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.w-isometric .w-iso__rock {
+  fill: #8c6a4a;
+}
+.w-isometric .w-iso__rock-dark {
+  fill: #5d4330;
+}
+.w-isometric .w-iso__rock-mid {
+  fill: #74563c;
+}
+
+.w-isometric .w-iso__tile {
+  stroke: rgb(0 0 0 / 0.08);
+  stroke-width: 1;
+}
+
+.w-isometric .w-iso__tile--grass {
+  fill: #8fd48a;
+}
+.w-isometric .w-iso__tile--park {
+  fill: #6fc06d;
+}
+.w-isometric .w-iso__tile--road {
+  fill: #6b6f7a;
+}
+.w-isometric .w-iso__tile--water {
+  fill: #5ab4e6;
+}
+
+.w-isometric[data-night='true'] .w-iso__tile--grass {
+  fill: #3a6a48;
+}
+.w-isometric[data-night='true'] .w-iso__tile--park {
+  fill: #2f5c3e;
+}
+.w-isometric[data-night='true'] .w-iso__tile--road {
+  fill: #3a3d48;
+}
+.w-isometric[data-night='true'] .w-iso__tile--water {
+  fill: #234a78;
+}
+
+.w-isometric .w-iso__win {
+  fill: none;
+  stroke: rgb(31 42 51 / 0.35);
+  stroke-width: 3;
+  stroke-dasharray: 5 7;
+}
+
+.w-isometric[data-night='true'] .w-iso__win {
+  stroke: #ffd66b;
+  filter: drop-shadow(0 0 3px #ffb84d);
+}
+
+.w-isometric .w-iso__face-t {
+  fill: var(--ft);
+}
+.w-isometric .w-iso__face-r {
+  fill: var(--fr);
+}
+.w-isometric .w-iso__face-l {
+  fill: var(--fl);
+}
+
+.w-isometric[data-night='true'] .w-iso__face-t {
+  fill: color-mix(in srgb, var(--ft) 45%, #121a3a);
+}
+.w-isometric[data-night='true'] .w-iso__face-r {
+  fill: color-mix(in srgb, var(--fr) 38%, #121a3a);
+}
+.w-isometric[data-night='true'] .w-iso__face-l {
+  fill: color-mix(in srgb, var(--fl) 30%, #121a3a);
+}
+
+.w-isometric .w-iso__trunk {
+  stroke: #6b4a2e;
+  stroke-width: 3;
+}
+
+.w-isometric .w-iso__crown {
+  fill: #3f9a4f;
+}
+
+.w-isometric .w-iso__crown-hi {
+  fill: #7fd17a;
+}
+
+.w-isometric[data-night='true'] .w-iso__crown {
+  fill: #24563a;
+}
+
+.w-isometric[data-night='true'] .w-iso__crown-hi {
+  fill: #3a7a50;
+}
+
+.w-isometric .w-iso__lamp path {
+  stroke: #2c3138;
+  stroke-width: 2;
+}
+
+.w-isometric .w-iso__lamp circle {
+  fill: #e8e2cf;
+}
+
+.w-isometric .w-iso__lamp-glow {
+  opacity: 0;
+}
+
+.w-isometric[data-night='true'] .w-iso__lamp circle {
+  fill: #ffe69a;
+}
+
+.w-isometric[data-night='true'] .w-iso__lamp-glow {
+  fill: #ffe69a;
+  opacity: 0.35;
+}
+
+.w-isometric .w-iso__headlight {
+  fill: #fff6c2;
+  opacity: 0;
+}
+
+.w-isometric[data-night='true'] .w-iso__headlight {
+  opacity: 0.85;
+}
+
+.w-isometric .w-iso__hull {
+  fill: #f6f1e4;
+  stroke: #2c3138;
+}
+
+.w-isometric .w-iso__sail {
+  fill: #e2231a;
+}
+
+@media (max-width: 860px) {
+  .w-isometric .w-iso__layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+  .w-isometric .w-iso__stage {
+    order: -1;
+  }
+  .w-isometric .w-iso__svg {
+    max-height: 50vh;
+  }
+}

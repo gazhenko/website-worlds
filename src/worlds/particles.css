@@ -1,0 +1,80 @@
+.w-particles {
+  --ink: #e8f6ff;
+  --ww-focus: #57d0ff;
+  background: #06070d;
+  color: var(--ink);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.w-particles .w-par__field {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.w-particles .w-par__field:focus-visible {
+  outline: 3px solid var(--ww-focus);
+  outline-offset: -6px;
+}
+
+.w-particles .w-par__canvas {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.w-particles .w-par__panel {
+  position: absolute;
+  left: clamp(0.75rem, 3vw, 2.5rem);
+  bottom: clamp(0.75rem, 3vw, 2.5rem);
+  z-index: 1;
+  display: grid;
+  gap: 0.7rem;
+  width: min(400px, calc(100% - 1.5rem));
+  padding: 1rem 1.1rem;
+  border: 1px solid rgb(87 208 255 / 0.35);
+  border-radius: 14px;
+  background: rgb(6 7 13 / 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.w-particles .w-par__title {
+  font-family: 'Avenir Next', 'Helvetica Neue', system-ui, sans-serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 200;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.w-particles .w-par__caption {
+  font-family: system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #cfe6f3;
+}
+
+.w-particles .w-par__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-particles .w-par__controls button {
+  padding: 0 0.9rem;
+  border: 1px solid rgb(87 208 255 / 0.6);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+
+.w-particles .w-par__controls button:hover {
+  background: rgb(87 208 255 / 0.18);
+}
+
+.w-particles .w-par__status {
+  font-size: 0.78rem;
+  color: #9fdcff;
+}

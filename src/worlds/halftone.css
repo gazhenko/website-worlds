@@ -1,0 +1,205 @@
+.w-halftone {
+  --paper: #f5efe2;
+  --ink: #1a1a1a;
+  --cyan: #00a3d9;
+  --magenta: #e6007e;
+  --yellow: #ffd800;
+  --ww-focus: #e6007e;
+  background:
+    radial-gradient(rgb(26 26 26 / 0.07) 1px, transparent 1.4px) 0 0 / 6px 6px,
+    #e4dccb;
+  color: var(--ink);
+  font-family: 'Futura', 'Avenir Next Condensed', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.w-halftone .w-half__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 360px);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: min(1240px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.5rem) clamp(1rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.w-halftone .w-half__sheet {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  background: var(--paper);
+  box-shadow: 0 20px 50px rgb(40 30 10 / 0.25);
+}
+
+.w-halftone .w-half__plate {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.w-halftone .w-half__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.w-halftone .w-half__crop {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--ink);
+  border-style: solid;
+  border-width: 0;
+}
+
+.w-halftone .w-half__crop--tl {
+  left: 4px;
+  top: 4px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+}
+.w-halftone .w-half__crop--tr {
+  right: 4px;
+  top: 4px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+}
+.w-halftone .w-half__crop--bl {
+  left: 4px;
+  bottom: 4px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+}
+.w-halftone .w-half__crop--br {
+  right: 4px;
+  bottom: 4px;
+  border-left-width: 1px;
+  border-top-width: 1px;
+}
+
+.w-halftone .w-half__strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.7rem;
+}
+
+.w-halftone .w-half__swatch {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 16px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.w-halftone .w-half__swatch--c {
+  background: var(--cyan);
+}
+.w-halftone .w-half__swatch--m {
+  background: var(--magenta);
+}
+.w-halftone .w-half__swatch--y {
+  background: var(--yellow);
+  color: var(--ink);
+}
+.w-halftone .w-half__swatch--k {
+  background: var(--ink);
+}
+
+.w-halftone .w-half__reg {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--ink), var(--ink)) center / 1px 100% no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 100% 1px no-repeat;
+}
+
+.w-halftone .w-half__strip-text {
+  margin-left: auto;
+  letter-spacing: 0.08em;
+}
+
+.w-halftone .w-half__panel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.w-halftone .w-half__kicker {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.w-halftone .w-half__title {
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-shadow: -3px 0 0 rgb(0 163 217 / 0.7), 3px 2px 0 rgb(230 0 126 / 0.6), 1px -2px 0 rgb(255 216 0 / 0.8);
+}
+
+.w-halftone .w-half__caption {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.w-halftone .w-half__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-halftone .w-half__controls button {
+  padding: 0 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 4px 4px 0 var(--magenta);
+}
+
+.w-halftone .w-half__controls button:nth-child(2) {
+  box-shadow: 4px 4px 0 var(--cyan);
+}
+
+.w-halftone .w-half__controls button:nth-child(3) {
+  box-shadow: 4px 4px 0 var(--yellow);
+}
+
+.w-halftone .w-half__controls button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.w-halftone .w-half__status {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 860px) {
+  .w-halftone .w-half__layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+  .w-halftone .w-half__sheet {
+    padding: 14px;
+  }
+}

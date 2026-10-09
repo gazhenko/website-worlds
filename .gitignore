@@ -1,0 +1,43 @@
+# Dependencies and build output
+node_modules/
+dist/
+.vite/
+.cache/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Browser automation / Playwright evidence
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+.playwright/
+.playwright-mcp/
+screenshots/
+evidence/
+
+# Agent and editor artifacts
+.claude/
+.codex/
+.cursor/
+.agent/
+.agents/
+agent-artifacts/
+artifacts/
+*.agent.log
+
+# OS noise
+.DS_Store
+Thumbs.db

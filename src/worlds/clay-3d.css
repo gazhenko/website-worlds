@@ -1,0 +1,197 @@
+.w-clay-3d {
+  --ink: #3a2418;
+  --panel: #fff4e4;
+  --accent: #e86a3a;
+  --ww-focus: #3a2418;
+  background: linear-gradient(160deg, #f6c99a, #e9a77a 60%, #c97f58);
+  color: var(--ink);
+  font-family: ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', 'Avenir Next', system-ui, sans-serif;
+}
+
+.w-clay-3d .w-c3__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 360px);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: min(1260px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.w-clay-3d .w-c3__set {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgb(80 30 10 / 0.35), inset 0 0 0 10px #c58658;
+  background: #8fc7d9;
+}
+
+.w-clay-3d .w-c3__svg {
+  width: 100%;
+  height: auto;
+}
+
+.w-clay-3d .w-c3__backdrop {
+  fill: #9fd1e2;
+}
+
+.w-clay-3d .w-c3__wire {
+  stroke: #6b6f7a;
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.w-clay-3d .w-c3__shadow {
+  fill: rgb(70 30 10 / 0.28);
+}
+
+.w-clay-3d .w-c3__thumb {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.45);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.w-clay-3d .w-c3__spiral {
+  fill: none;
+  stroke: #8f3a14;
+  stroke-width: 8;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+.w-clay-3d .w-c3__stalk {
+  fill: none;
+  stroke: #7fa83a;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.w-clay-3d [data-sculpt='robot'] .w-c3__stalk {
+  stroke: #3b3b48;
+  stroke-width: 6;
+}
+
+.w-clay-3d .w-c3__smile {
+  fill: none;
+  stroke: #2a1a12;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.w-clay-3d .w-c3__spine {
+  stroke: #fff8e8;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.w-clay-3d .w-c3__grass path {
+  fill: none;
+  stroke: #6fae3a;
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.w-clay-3d [data-sculpt] {
+  display: none;
+}
+
+.w-clay-3d[data-model='snail'] [data-sculpt='snail'],
+.w-clay-3d[data-model='cactus'] [data-sculpt='cactus'],
+.w-clay-3d[data-model='robot'] [data-sculpt='robot'] {
+  display: inline;
+}
+
+.w-clay-3d .w-c3__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0.28 0'/></filter><rect width='180' height='180' filter='url(%23g)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.w-clay-3d .w-c3__slate {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: #1d1d24;
+  color: #f4f1e8;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  background-image: repeating-linear-gradient(-45deg, #1d1d24 0 10px, #f4f1e8 10px 14px);
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  padding-top: 0.7rem;
+}
+
+.w-clay-3d .w-c3__panel {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.4rem;
+  border-radius: 36px 36px 30px 40px / 40px 30px 36px 36px;
+  background: var(--panel);
+  box-shadow: inset -8px -10px 18px rgb(150 80 40 / 0.18), inset 8px 8px 16px rgb(255 255 255 / 0.85), 0 20px 40px rgb(80 30 10 / 0.25);
+}
+
+.w-clay-3d .w-c3__kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #8f3a14;
+}
+
+.w-clay-3d .w-c3__title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: #bc481c;
+  text-shadow: 0 3px 0 #a3461f, 0 6px 10px rgb(80 30 10 / 0.3);
+  -webkit-text-stroke: 1px #7f3519;
+}
+
+.w-clay-3d .w-c3__caption {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.w-clay-3d .w-c3__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.w-clay-3d .w-c3__controls button {
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 18px 22px 16px 24px;
+  background: #ffd2b8;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.92rem;
+  box-shadow: inset -4px -5px 8px rgb(150 60 20 / 0.25), inset 4px 4px 8px rgb(255 255 255 / 0.8), 0 6px 10px rgb(80 30 10 / 0.2);
+}
+
+.w-clay-3d .w-c3__controls button:active {
+  transform: scale(0.96, 0.9);
+}
+
+.w-clay-3d .w-c3__status {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #5a3020;
+}
+
+@media (max-width: 860px) {
+  .w-clay-3d .w-c3__layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+}

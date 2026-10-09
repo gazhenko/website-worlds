@@ -1,0 +1,120 @@
+.w-synthwave {
+  --edge: #ff6ad5;
+  --glow: #ff3fa4;
+  --ww-focus: #ffe66b;
+  background: #120326;
+  color: #fdf2ff;
+  font-family: 'Avenir Next', 'Futura', 'Century Gothic', system-ui, sans-serif;
+}
+
+.w-synthwave[data-palette='midnight'] {
+  --edge: #5cf2ff;
+  --glow: #8a7dff;
+}
+
+.w-synthwave[data-palette='lagoon'] {
+  --edge: #2ee6c0;
+  --glow: #ff6f91;
+}
+
+.w-synthwave .w-syn__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.w-synthwave .w-syn__fallback {
+  background: linear-gradient(#120326, #8a1f6b 55%, #0d0221 60%);
+}
+
+.w-synthwave .w-syn__panel {
+  position: absolute;
+  left: clamp(0.75rem, 3vw, 2.5rem);
+  top: calc(var(--ww-hud-space) + 0.25rem);
+  z-index: 1;
+  display: grid;
+  gap: 0.75rem;
+  width: min(420px, calc(100% - 1.5rem));
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: rgb(10 2 24 / 0.72);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--glow) 35%, transparent), inset 0 0 18px rgb(255 255 255 / 0.04);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.w-synthwave .w-syn__kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--edge);
+}
+
+.w-synthwave .w-syn__title {
+  font-family: 'Futura', 'Avenir Next', 'Century Gothic', Impact, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, #bfe6ff 42%, #3a1d6e 50%, #ff6ad5 54%, #ffe0f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(255 255 255 / 0.55);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--glow) 60%, transparent));
+}
+
+.w-synthwave .w-syn__caption {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #f2e6ff;
+}
+
+.w-synthwave .w-syn__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-synthwave .w-syn__controls button {
+  padding: 0 0.95rem;
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+  background: rgb(255 255 255 / 0.04);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: skewX(-8deg);
+}
+
+.w-synthwave .w-syn__controls button:hover,
+.w-synthwave .w-syn__controls button[aria-pressed='true'] {
+  background: var(--edge);
+  color: #120326;
+}
+
+.w-synthwave .w-syn__status {
+  font-size: 0.82rem;
+  color: #fde3ff;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  .w-synthwave .w-syn__panel {
+    left: 0.5rem;
+    right: 0.5rem;
+    width: auto;
+    gap: 0.55rem;
+    padding: 0.9rem 1rem;
+  }
+  .w-synthwave .w-syn__caption {
+    font-size: 0.86rem;
+  }
+}

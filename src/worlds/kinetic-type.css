@@ -1,0 +1,127 @@
+.w-kinetic-type {
+  --ground: #111111;
+  --type: #f5f1e8;
+  --accent: #ff4f1f;
+  --ww-focus: #ff8a5c;
+  background: var(--ground);
+  color: var(--type);
+  font-family: 'Helvetica Neue', 'Arial Black', Arial, sans-serif;
+}
+
+.w-kinetic-type .w-kin__stage {
+  position: absolute;
+  inset: var(--ww-hud-space) 0 0 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem 1rem 11rem;
+  overflow: hidden;
+}
+
+.w-kinetic-type .w-kin__phrase {
+  max-width: 100%;
+  font-size: clamp(3rem, 12.5vw, 10.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.w-kinetic-type .w-kin__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.w-kinetic-type .w-kin__word:nth-child(2) {
+  color: var(--accent);
+}
+
+.w-kinetic-type .w-kin__ch {
+  display: inline-block;
+  will-change: transform;
+}
+
+.w-kinetic-type .w-kin__head {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  top: calc(var(--ww-hud-space) + 0.25rem);
+  z-index: 1;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.w-kinetic-type .w-kin__title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.w-kinetic-type .w-kin__meta {
+  font-size: 0.78rem;
+  color: #c9c3b6;
+}
+
+.w-kinetic-type .w-kin__panel {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 0.6rem 2rem;
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--type);
+}
+
+.w-kinetic-type .w-kin__caption {
+  max-width: 52ch;
+  font-family: system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #e3ddd0;
+}
+
+.w-kinetic-type .w-kin__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.w-kinetic-type .w-kin__controls button {
+  padding: 0 1rem;
+  border: 2px solid var(--type);
+  border-radius: 0;
+  background: transparent;
+  color: var(--type);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.w-kinetic-type .w-kin__controls button:hover {
+  background: var(--type);
+  color: var(--ground);
+}
+
+.w-kinetic-type .w-kin__status {
+  grid-column: 1 / -1;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  color: #ffb08f;
+}
+
+@media (max-width: 720px) {
+  .w-kinetic-type .w-kin__stage {
+    padding-bottom: 15rem;
+  }
+  .w-kinetic-type .w-kin__panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .w-kinetic-type .w-kin__controls {
+    justify-content: flex-start;
+  }
+}

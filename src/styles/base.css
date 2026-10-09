@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ww-hud-space: 4.5rem;
+  --ww-ink: #f2f1f6;
+  --ww-muted: #b9b7c6;
+  --ww-bg: #0b0b10;
+  --ww-panel: #15151d;
+  --ww-line: rgb(255 255 255 / 0.1);
+  --ww-gold: #ffd166;
+  --ww-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ww-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--ww-bg);
+  color: var(--ww-ink);
+  font-family: var(--ww-sans);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ww-focus, var(--ww-gold));
+  outline-offset: 3px;
+}
+
+h1:focus,
+main:focus,
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+.ww-vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ww-skip {
+  position: fixed;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 200;
+  transform: translateY(-220%);
+  background: var(--ww-gold);
+  color: #111;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ww-skip:focus {
+  transform: none;
+}
+
+.ww-noscript {
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+/* ------------------------------------------------------------------
+   Global motion contract.
+   html[data-motion="paused"] is set by the motion controller when the visitor pauses
+   motion, or by default when prefers-reduced-motion is on. Every CSS animation and
+   transition is removed so each world rests in its stationary composition; JS loops
+   stop in the scope runtime. Before JS boots, the media query alone applies.
+   ------------------------------------------------------------------ */
+html[data-motion='paused'] *,
+html[data-motion='paused'] *::before,
+html[data-motion='paused'] *::after,
+html[data-page-hidden='true'] *,
+html[data-page-hidden='true'] *::before,
+html[data-page-hidden='true'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion]) *,
+  html:not([data-motion]) *::before,
+  html:not([data-motion]) *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

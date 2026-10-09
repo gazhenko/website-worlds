@@ -1,0 +1,285 @@
+.w-glassmorphism {
+  --frost: 18px;
+  --base: #241a5c;
+  --o0: #ff5fa8;
+  --o1: #7b5cff;
+  --o2: #3fd6ff;
+  --o3: #ff9a5c;
+  --o4: #59f5c3;
+  --ink: #12122e;
+  --ww-focus: #12122e;
+  background: var(--base);
+  color: var(--ink);
+  font-family: 'SF Pro Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.8s ease;
+}
+
+.w-glassmorphism[data-tint='citrus'] {
+  --base: #5a2a12;
+  --o0: #ffcf3d;
+  --o1: #ff6b3d;
+  --o2: #c6ff5c;
+  --o3: #ff3d7f;
+  --o4: #ffe9a8;
+}
+
+.w-glassmorphism[data-tint='lagoon'] {
+  --base: #052a3a;
+  --o0: #2ee6c0;
+  --o1: #2a6cf5;
+  --o2: #9be7ff;
+  --o3: #6b4dff;
+  --o4: #00b4a0;
+}
+
+.w-glassmorphism .w-glass__field,
+.w-glassmorphism .w-glass__lens-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--base);
+}
+
+.w-glassmorphism .w-glass__orb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40vmax;
+  height: 40vmax;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.w-glassmorphism .w-glass__orb--0 {
+  background: radial-gradient(circle, var(--o0) 0%, transparent 66%);
+}
+.w-glassmorphism .w-glass__orb--1 {
+  background: radial-gradient(circle, var(--o1) 0%, transparent 66%);
+}
+.w-glassmorphism .w-glass__orb--2 {
+  background: radial-gradient(circle, var(--o2) 0%, transparent 66%);
+}
+.w-glassmorphism .w-glass__orb--3 {
+  background: radial-gradient(circle, var(--o3) 0%, transparent 66%);
+}
+.w-glassmorphism .w-glass__orb--4 {
+  background: radial-gradient(circle, var(--o4) 0%, transparent 66%);
+}
+
+.w-glassmorphism .w-glass__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 260px);
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-content: center;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: calc(var(--ww-hud-space) + 0.5rem) clamp(1rem, 4vw, 3rem) 2.5rem;
+  pointer-events: none;
+}
+
+.w-glassmorphism .w-glass__pane {
+  position: relative;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.58), rgb(255 255 255 / 0.36));
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow:
+    0 24px 60px rgb(10 6 40 / 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    inset 0 -1px 0 rgb(255 255 255 / 0.3);
+  -webkit-backdrop-filter: blur(var(--frost)) saturate(170%);
+  backdrop-filter: blur(var(--frost)) saturate(170%);
+  transition: -webkit-backdrop-filter 0.5s ease, backdrop-filter 0.5s ease;
+  pointer-events: auto;
+}
+
+@supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+  .w-glassmorphism .w-glass__pane {
+    background: rgb(255 255 255 / 0.82);
+  }
+}
+
+.w-glassmorphism .w-glass__main {
+  grid-row: 1 / span 2;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.4rem, 3.5vw, 2.4rem);
+}
+
+.w-glassmorphism .w-glass__kicker {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2c2a55;
+}
+
+.w-glassmorphism .w-glass__title {
+  font-size: clamp(2.3rem, 6.4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.w-glassmorphism .w-glass__caption {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1b1a3c;
+}
+
+.w-glassmorphism .w-glass__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.w-glassmorphism .w-glass__btn {
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.85);
+  background: rgb(255 255 255 / 0.55);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: inset 0 1px 0 #fff, 0 6px 16px rgb(10 6 40 / 0.15);
+}
+
+.w-glassmorphism .w-glass__btn:hover {
+  background: rgb(255 255 255 / 0.8);
+}
+
+.w-glassmorphism .w-glass__status {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #24234a;
+}
+
+.w-glassmorphism .w-glass__weather,
+.w-glassmorphism .w-glass__now {
+  display: grid;
+  gap: 0.3rem;
+  align-content: center;
+  padding: 1.25rem 1.4rem;
+  font-weight: 500;
+}
+
+.w-glassmorphism .w-glass__sun {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff7c2, #ffc23d);
+  box-shadow: 0 0 24px #ffd66b;
+}
+
+.w-glassmorphism .w-glass__big {
+  font-size: 2.6rem;
+  font-weight: 250;
+  line-height: 1;
+}
+
+.w-glassmorphism .w-glass__small {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.w-glassmorphism .w-glass__song {
+  font-size: 1.05rem;
+}
+
+.w-glassmorphism .w-glass__bar {
+  display: block;
+  height: 6px;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: rgb(18 18 46 / 0.15);
+  overflow: hidden;
+}
+
+.w-glassmorphism .w-glass__bar span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ink);
+  animation: w-glass-bar 9s ease-in-out infinite alternate;
+}
+
+@keyframes w-glass-bar {
+  to {
+    width: 88%;
+  }
+}
+
+/* The lens: a circular window onto a magnified, saturated copy of the colour field. */
+.w-glassmorphism .w-glass__lens {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 156px;
+  height: 156px;
+  min-height: 0;
+  padding: 0;
+  border: 1.5px solid rgb(255 255 255 / 0.9);
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  box-shadow:
+    inset 8px 0 16px rgb(255 60 160 / 0.28),
+    inset -8px 0 16px rgb(40 200 255 / 0.28),
+    inset 0 0 0 3px rgb(255 255 255 / 0.35),
+    0 22px 44px rgb(10 6 40 / 0.4);
+}
+
+.w-glassmorphism .w-glass__lens:active {
+  cursor: grabbing;
+}
+
+.w-glassmorphism .w-glass__lens:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.w-glassmorphism .w-glass__lens-field {
+  inset: auto;
+  transform: scale(1.4);
+  filter: saturate(1.45) contrast(1.08);
+}
+
+.w-glassmorphism .w-glass__lens-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 24%, rgb(255 255 255 / 0.75), transparent 22%),
+    radial-gradient(circle at 70% 82%, rgb(255 255 255 / 0.18), transparent 30%);
+  pointer-events: none;
+}
+
+@media (max-width: 820px) {
+  .w-glassmorphism .w-glass__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-content: start;
+  }
+  .w-glassmorphism .w-glass__main {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .w-glassmorphism .w-glass__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .w-glassmorphism .w-glass__lens {
+    width: 120px;
+    height: 120px;
+  }
+}

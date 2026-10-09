@@ -1,0 +1,127 @@
+.w-minimalism {
+  --ground: #f7f6f3;
+  --ink: #1a1a1a;
+  --quiet: #55534f;
+  --ww-focus: #1a1a1a;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', 'Avenir Next', system-ui, sans-serif;
+}
+
+.w-minimalism .w-min__stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--ww-hud-space);
+  bottom: 9rem;
+  width: 100%;
+  height: calc(100% - var(--ww-hud-space) - 9rem);
+  max-width: none;
+}
+
+.w-minimalism .w-min__form {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
+.w-minimalism .w-min__dot {
+  fill: var(--ink);
+}
+
+.w-minimalism .w-min__trails {
+  display: none;
+}
+
+.w-minimalism[data-trace='true'] .w-min__trails {
+  display: block;
+}
+
+.w-minimalism .w-min__trail {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.w-minimalism .w-min__text {
+  position: absolute;
+  left: clamp(1.25rem, 5vw, 4rem);
+  bottom: clamp(1.25rem, 5vw, 3.5rem);
+  display: grid;
+  gap: 0.6rem;
+  max-width: 30ch;
+}
+
+.w-minimalism .w-min__title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.w-minimalism .w-min__caption {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--quiet);
+}
+
+.w-minimalism .w-min__panel {
+  position: absolute;
+  right: clamp(1.25rem, 5vw, 4rem);
+  bottom: clamp(1.25rem, 5vw, 3.5rem);
+  display: grid;
+  justify-items: end;
+  gap: 0.4rem;
+}
+
+.w-minimalism .w-min__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0 1.4rem;
+}
+
+.w-minimalism .w-min__controls button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.4em;
+}
+
+.w-minimalism .w-min__controls button[aria-pressed='true'] {
+  text-decoration-thickness: 3px;
+}
+
+.w-minimalism .w-min__status {
+  font-size: 0.78rem;
+  color: var(--quiet);
+}
+
+@media (max-width: 700px) {
+  .w-minimalism .w-min__stage {
+    bottom: 15rem;
+    height: calc(100% - var(--ww-hud-space) - 15rem);
+  }
+  .w-minimalism .w-min__text {
+    right: 1.25rem;
+    bottom: 7rem;
+    max-width: none;
+  }
+  .w-minimalism .w-min__panel {
+    left: 1.25rem;
+    right: 1.25rem;
+    justify-items: start;
+  }
+  .w-minimalism .w-min__controls {
+    justify-content: flex-start;
+  }
+}

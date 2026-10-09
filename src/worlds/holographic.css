@@ -1,0 +1,319 @@
+.w-holographic {
+  --s1: #ff9de2;
+  --s2: #9dd9ff;
+  --s3: #b4ffcf;
+  --s4: #fff3a3;
+  --s5: #c5a3ff;
+  --card-ink: #1b1530;
+  --ink: #f2efff;
+  --ww-focus: #b5f3ff;
+  background: radial-gradient(80% 70% at 60% 40%, #17142c, #07060f 70%);
+  color: var(--ink);
+  font-family: 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+
+.w-holographic[data-spectrum='oil'] {
+  --s1: #3a1c71;
+  --s2: #d76d77;
+  --s3: #ffaf7b;
+  --s4: #2bc0e4;
+  --s5: #1e9600;
+  --card-ink: #ffffff;
+}
+
+.w-holographic[data-spectrum='aurora'] {
+  --s1: #00f5a0;
+  --s2: #00d9f5;
+  --s3: #7b2ff7;
+  --s4: #f107a3;
+  --s5: #a6ffcb;
+  --card-ink: #0b0820;
+}
+
+.w-holographic .w-holo__interference {
+  position: absolute;
+  inset: -20%;
+  background:
+    repeating-radial-gradient(circle at 30% 40%, rgb(181 164 255 / 0.07) 0 2px, transparent 2px 9px),
+    repeating-radial-gradient(circle at 70% 60%, rgb(157 217 255 / 0.07) 0 2px, transparent 2px 9px);
+  animation: w-holo-moire 30s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes w-holo-moire {
+  to {
+    transform: translate(3%, -2%) scale(1.04);
+  }
+}
+
+.w-holographic .w-holo__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  grid-template-areas:
+    'card proj'
+    'panel panel';
+  align-items: center;
+  justify-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  width: min(1180px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.5rem;
+}
+
+@media (min-width: 1000px) {
+  .w-holographic .w-holo__layout {
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr) minmax(0, 0.8fr);
+    grid-template-areas: 'panel card proj';
+  }
+}
+
+.w-holographic .w-holo__card-wrap {
+  grid-area: card;
+  perspective: 900px;
+  touch-action: pan-y;
+}
+
+.w-holographic .w-holo__card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  width: clamp(180px, 26vw, 300px);
+  aspect-ratio: 5 / 7;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 60px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(255 255 255 / 0.4);
+}
+
+.w-holographic .w-holo__foil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s1), var(--s2));
+  background-size: 300% 300%;
+  background-position: var(--mx) var(--my);
+}
+
+.w-holographic .w-holo__grating {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.16) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(60deg, rgb(0 0 0 / 0.06) 0 1px, transparent 1px 4px);
+  mix-blend-mode: overlay;
+}
+
+.w-holographic .w-holo__sheen {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at var(--mx) var(--my), rgb(255 255 255 / 0.85), transparent 40%),
+    conic-gradient(from 90deg at var(--mx) var(--my), transparent, rgb(255 255 255 / 0.25), transparent 30%);
+  mix-blend-mode: soft-light;
+}
+
+.w-holographic .w-holo__card-content {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  justify-items: center;
+  height: 100%;
+  padding: 1rem;
+  color: var(--card-ink);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  text-align: center;
+}
+
+.w-holographic .w-holo__card-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.w-holographic .w-holo__emblem {
+  align-self: center;
+  width: 62%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  opacity: 0.85;
+}
+
+.w-holographic .w-holo__card-name {
+  font-family: 'Avenir Next', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  font-size: 0.95rem;
+}
+
+.w-holographic .w-holo__card-small {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+.w-holographic .w-holo__projector {
+  grid-area: proj;
+  position: relative;
+  width: clamp(170px, 26vw, 320px);
+  aspect-ratio: 3 / 4;
+}
+
+.w-holographic .w-holo__beam {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 12%;
+  bottom: 12%;
+  clip-path: polygon(50% 100%, 0 8%, 100% 8%);
+  background:
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 0.08) 0 1px, transparent 1px 4px),
+    linear-gradient(0deg, color-mix(in srgb, var(--s2) 55%, transparent), transparent 85%);
+  opacity: 0.75;
+}
+
+.w-holographic .w-holo__scene3d {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 0;
+  height: 0;
+  perspective: 700px;
+}
+
+.w-holographic .w-holo__stack {
+  --gap: 16px;
+  --spin: 0deg;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: rotateX(68deg) rotateZ(var(--spin));
+}
+
+.w-holographic .w-holo__layer {
+  position: absolute;
+  left: -70px;
+  top: -70px;
+  width: 140px;
+  height: 140px;
+  transform: translateZ(calc((var(--i) - 2) * var(--gap)));
+  transform-style: preserve-3d;
+}
+
+.w-holographic .w-holo__ring {
+  position: absolute;
+  inset: calc(var(--i) * 8px);
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--s2) 70%, white);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--s5) 60%, transparent), inset 0 0 14px color-mix(in srgb, var(--s1) 40%, transparent);
+  background: radial-gradient(circle, color-mix(in srgb, var(--s3) 18%, transparent), transparent 70%);
+}
+
+.w-holographic .w-holo__layer:nth-child(odd) .w-holo__ring {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--s1) 70%, white);
+}
+
+.w-holographic .w-holo__layer-label {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--i) * 8px - 4px);
+  transform: translateX(-50%);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: #e9f6ff;
+  white-space: nowrap;
+}
+
+.w-holographic .w-holo__base {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 6%;
+  height: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, #4b4870, #15132a 70%);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--s2) 40%, transparent);
+}
+
+.w-holographic .w-holo__base span {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 20%;
+  height: 30%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--s2) 80%, white);
+  filter: blur(4px);
+}
+
+.w-holographic .w-holo__panel {
+  grid-area: panel;
+  display: grid;
+  gap: 0.9rem;
+  max-width: 34rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 18px;
+  background: rgb(10 8 24 / 0.7);
+}
+
+.w-holographic .w-holo__kicker {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: #c9e9ff;
+}
+
+.w-holographic .w-holo__title {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(100deg, #ffffff, color-mix(in srgb, var(--s2) 60%, white), #ffffff, color-mix(in srgb, var(--s1) 60%, white));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.w-holographic .w-holo__caption {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #e3defa;
+}
+
+.w-holographic .w-holo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.w-holographic .w-holo__controls button {
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(#141127, #141127) padding-box,
+    linear-gradient(115deg, var(--s1), var(--s2), var(--s3), var(--s4)) border-box;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.w-holographic .w-holo__controls button:hover,
+.w-holographic .w-holo__controls button[aria-pressed='true'] {
+  background:
+    linear-gradient(#262145, #262145) padding-box,
+    linear-gradient(115deg, var(--s1), var(--s2), var(--s3), var(--s4)) border-box;
+}
+
+.w-holographic .w-holo__status {
+  font-size: 0.86rem;
+  color: #c9e9ff;
+}

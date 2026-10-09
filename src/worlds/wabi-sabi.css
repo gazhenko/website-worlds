@@ -1,0 +1,282 @@
+.w-wabi-sabi {
+  --paper: #ece6da;
+  --ink: #2b2522;
+  --quiet: #4a423b;
+  --gold: #d4a943;
+  --clay: #a58c72;
+  --glaze: #7e7a6c;
+  --leaf: #b5643c;
+  --ww-focus: #2b2522;
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='8'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.12 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: 'Iowan Old Style', 'Hiragino Mincho ProN', 'Palatino Linotype', Palatino, Georgia, serif;
+  transition: background-color 1.2s ease;
+}
+
+.w-wabi-sabi[data-season='winter'] {
+  --paper: #e6e7e4;
+  --glaze: #8f9596;
+  --leaf: #ffffff;
+}
+
+.w-wabi-sabi[data-season='spring'] {
+  --paper: #efe7e0;
+  --glaze: #8a8f78;
+  --leaf: #e8a7b5;
+}
+
+.w-wabi-sabi[data-season='summer'] {
+  --paper: #e9e6d6;
+  --glaze: #6f7d64;
+  --leaf: #5f7f4a;
+}
+
+.w-wabi-sabi .w-wabi__scene {
+  position: absolute;
+  inset: var(--ww-hud-space) 0 0 0;
+  width: 100%;
+  height: calc(100% - var(--ww-hud-space));
+  max-width: none;
+}
+
+.w-wabi-sabi .w-wabi__enso {
+  fill: var(--ink);
+  opacity: 0.9;
+}
+
+.w-wabi-sabi .w-wabi__streak {
+  fill: none;
+  stroke: var(--paper);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+
+.w-wabi-sabi .w-wabi__enso-reveal {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 70;
+  stroke-linecap: round;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+  animation: w-wabi-brush 2.6s cubic-bezier(0.4, 0.1, 0.3, 1) both;
+}
+
+@keyframes w-wabi-brush {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.w-wabi-sabi .w-wabi__twig {
+  fill: none;
+  stroke: #4a3a2e;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.w-wabi-sabi .w-wabi__twig--thin {
+  stroke-width: 3;
+}
+
+.w-wabi-sabi .w-wabi__leaves path {
+  fill: var(--leaf);
+  transition: fill 1s ease, opacity 1s ease;
+}
+
+.w-wabi-sabi .w-wabi__snow,
+.w-wabi-sabi .w-wabi__blossom {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.w-wabi-sabi .w-wabi__snow ellipse {
+  fill: #fff;
+}
+
+.w-wabi-sabi .w-wabi__blossom circle {
+  fill: #f1c1cc;
+  stroke: #d48c9c;
+}
+
+.w-wabi-sabi[data-season='winter'] .w-wabi__leaves path {
+  opacity: 0;
+}
+
+.w-wabi-sabi[data-season='winter'] .w-wabi__snow,
+.w-wabi-sabi[data-season='spring'] .w-wabi__blossom {
+  opacity: 1;
+}
+
+.w-wabi-sabi .w-wabi__table {
+  stroke: #6f6556;
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.w-wabi-sabi .w-wabi__shadow {
+  fill: rgb(60 50 40 / 0.18);
+}
+
+.w-wabi-sabi .w-wabi__clay {
+  fill: var(--clay);
+}
+
+.w-wabi-sabi .w-wabi__glaze {
+  fill: var(--glaze);
+  transition: fill 1.2s ease;
+}
+
+.w-wabi-sabi .w-wabi__drip {
+  fill: none;
+  stroke: var(--glaze);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke 1.2s ease;
+}
+
+.w-wabi-sabi .w-wabi__lip {
+  fill: none;
+  stroke: #e6dccb;
+  stroke-width: 3;
+  opacity: 0.7;
+}
+
+.w-wabi-sabi .w-wabi__foot {
+  fill: none;
+  stroke: #6f5b48;
+  stroke-width: 2;
+}
+
+.w-wabi-sabi .w-wabi__crack {
+  fill: none;
+  stroke: #2b2522;
+  stroke-width: 1.4;
+  opacity: 0.7;
+}
+
+.w-wabi-sabi .w-wabi__gold {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 3px rgb(255 214 120 / 0.8));
+}
+
+.w-wabi-sabi .w-wabi__gold.is-mended {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.8s ease-in-out;
+}
+
+.w-wabi-sabi .w-wabi__falling-leaf {
+  fill: var(--leaf);
+}
+
+.w-wabi-sabi .w-wabi__falling-flake {
+  fill: #fff;
+  stroke: #c7cdd0;
+  display: none;
+}
+
+.w-wabi-sabi[data-season='winter'] .w-wabi__falling-leaf {
+  display: none;
+}
+
+.w-wabi-sabi[data-season='winter'] .w-wabi__falling-flake {
+  display: block;
+}
+
+.w-wabi-sabi .w-wabi__seal {
+  fill: #a8322a;
+}
+
+.w-wabi-sabi .w-wabi__seal-mark {
+  fill: none;
+  stroke: #f4e7da;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.w-wabi-sabi .w-wabi__poem {
+  position: absolute;
+  right: clamp(1rem, 5vw, 4rem);
+  top: calc(var(--ww-hud-space) + 2rem);
+  writing-mode: vertical-rl;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  line-height: 2.1;
+  color: var(--quiet);
+}
+
+.w-wabi-sabi .w-wabi__panel {
+  position: absolute;
+  right: clamp(1rem, 5vw, 4rem);
+  bottom: clamp(1rem, 4vw, 3rem);
+  display: grid;
+  gap: 0.8rem;
+  max-width: 21rem;
+}
+
+.w-wabi-sabi .w-wabi__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.w-wabi-sabi .w-wabi__caption {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--quiet);
+}
+
+.w-wabi-sabi .w-wabi__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+
+.w-wabi-sabi .w-wabi__controls button {
+  padding: 0 0.2rem;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.98rem;
+}
+
+.w-wabi-sabi .w-wabi__controls button:hover {
+  border-bottom-width: 3px;
+}
+
+.w-wabi-sabi .w-wabi__status {
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--quiet);
+}
+
+@media (max-width: 760px) {
+  .w-wabi-sabi .w-wabi__scene {
+    inset: auto 0 0 0;
+    top: auto;
+    height: 48vh;
+  }
+  .w-wabi-sabi .w-wabi__panel {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    max-width: none;
+    padding: calc(var(--ww-hud-space) + 0.5rem) 1.25rem 0;
+  }
+  .w-wabi-sabi .w-wabi__poem {
+    display: none;
+  }
+}

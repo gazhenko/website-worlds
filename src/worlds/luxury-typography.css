@@ -1,0 +1,230 @@
+.w-luxury-typography {
+  --ivory: #f3ece0;
+  --gold: #c9a45c;
+  --gold-hi: #f1d9a0;
+  --ground: #0b0a09;
+  --track: 0.04em;
+  --didone: Didot, 'Bodoni 72', 'Bodoni MT', 'Bodoni 72 Oldstyle', 'Big Caslon', 'Playfair Display', 'Times New Roman', serif;
+  --ww-focus: #f1d9a0;
+  background: radial-gradient(90% 70% at 50% 45%, #1a1714, var(--ground) 70%);
+  color: var(--ivory);
+  font-family: var(--didone);
+}
+
+.w-luxury-typography[data-tracking='airy'] {
+  --track: 0.2em;
+}
+
+.w-luxury-typography[data-tracking='tight'] {
+  --track: -0.035em;
+}
+
+.w-luxury-typography .w-lux__frame {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: calc(var(--ww-hud-space) + 0.5rem) clamp(1rem, 5vw, 4rem) 2rem;
+  border: 1px solid rgb(201 164 92 / 0.35);
+  border-width: 0;
+}
+
+.w-luxury-typography .w-lux__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgb(201 164 92 / 0.45);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.w-luxury-typography .w-lux__maison {
+  color: var(--gold);
+}
+
+.w-luxury-typography .w-lux__h1 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.w-luxury-typography .w-lux__season {
+  justify-self: end;
+  color: var(--gold);
+}
+
+.w-luxury-typography .w-lux__stage {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: clamp(0.8rem, 2.5vw, 1.6rem);
+  text-align: center;
+  min-width: 0;
+}
+
+.w-luxury-typography .w-lux__rule {
+  display: block;
+  width: min(420px, 70%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.w-luxury-typography .w-lux__rule--glint {
+  position: relative;
+  overflow: hidden;
+}
+
+.w-luxury-typography .w-lux__rule--glint span {
+  position: absolute;
+  top: -2px;
+  left: -30%;
+  width: 30%;
+  height: 5px;
+  background: radial-gradient(closest-side, var(--gold-hi), transparent);
+  animation: w-lux-glint 6s ease-in-out infinite;
+}
+
+@keyframes w-lux-glint {
+  to {
+    left: 100%;
+  }
+}
+
+.w-luxury-typography .w-lux__collection {
+  font-size: 0.78rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.w-luxury-typography .w-lux__word {
+  max-width: 100%;
+  font-size: clamp(2.8rem, 14vw, 11rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.w-luxury-typography[data-style='italic'] .w-lux__word {
+  font-style: italic;
+}
+
+.w-luxury-typography .w-lux__letters {
+  display: inline-block;
+  letter-spacing: var(--track);
+  transition: letter-spacing 0.9s cubic-bezier(0.6, 0, 0.2, 1);
+  animation: w-lux-breathe 11s ease-in-out infinite alternate;
+}
+
+@keyframes w-lux-breathe {
+  from {
+    word-spacing: 0;
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.018);
+  }
+}
+
+.w-luxury-typography .w-lux__ch {
+  display: inline-block;
+}
+
+.w-luxury-typography .is-entering .w-lux__ch {
+  animation: w-lux-rise 1.4s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  animation-delay: calc(var(--i) * 85ms);
+}
+
+@keyframes w-lux-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+    filter: blur(6px);
+  }
+}
+
+.w-luxury-typography .w-lux__gloss {
+  max-width: 40ch;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #e3d8c6;
+}
+
+.w-luxury-typography .w-lux__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem 2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgb(201 164 92 / 0.45);
+}
+
+.w-luxury-typography .w-lux__caption {
+  max-width: 54ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #e6dccb;
+}
+
+.w-luxury-typography .w-lux__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.w-luxury-typography .w-lux__controls button {
+  padding: 0 1.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ivory);
+  font-family: var(--didone);
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.w-luxury-typography .w-lux__controls button:hover,
+.w-luxury-typography .w-lux__controls button[aria-pressed='true'] {
+  background: var(--gold);
+  color: var(--ground);
+}
+
+.w-luxury-typography .w-lux__status {
+  grid-column: 1 / -1;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@media (max-width: 720px) {
+  .w-luxury-typography .w-lux__top {
+    grid-template-columns: 1fr 1fr;
+  }
+  .w-luxury-typography .w-lux__h1 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    letter-spacing: 0.3em;
+  }
+  .w-luxury-typography .w-lux__foot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .w-luxury-typography .w-lux__controls {
+    justify-content: flex-start;
+  }
+  .w-luxury-typography .w-lux__word {
+    font-size: clamp(2.4rem, 13vw, 6rem);
+  }
+  .w-luxury-typography[data-tracking='airy'] .w-lux__word {
+    font-size: clamp(2.2rem, 10.5vw, 6rem);
+  }
+}

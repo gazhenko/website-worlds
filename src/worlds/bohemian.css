@@ -1,0 +1,258 @@
+.w-bohemian {
+  --cream: #f3e6d3;
+  --terracotta: #b34e28;
+  --mustard: #d9a441;
+  --sage: #8a9a6b;
+  --rose: #d98c7a;
+  --rust: #8f3b1f;
+  --ink: #3d2418;
+  --ww-focus: #3d2418;
+  background:
+    radial-gradient(rgb(160 110 70 / 0.08) 1px, transparent 1.5px) 0 0 / 9px 9px,
+    radial-gradient(120% 90% at 30% 20%, #f8ecdc, #ead6bd);
+  color: var(--ink);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Hoefler Text', Georgia, serif;
+}
+
+.w-bohemian[data-time='golden'] {
+  background:
+    radial-gradient(rgb(160 110 70 / 0.08) 1px, transparent 1.5px) 0 0 / 9px 9px,
+    radial-gradient(120% 90% at 30% 20%, #fbe1c4, #e9c49c);
+}
+
+.w-bohemian .w-boho__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 380px);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: min(1240px, 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(var(--ww-hud-space) + 0.25rem) clamp(0.75rem, 3vw, 2.5rem) 1.5rem;
+}
+
+.w-bohemian .w-boho__scene svg {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - var(--ww-hud-space) - 2rem);
+  max-height: calc(100dvh - var(--ww-hud-space) - 2rem);
+}
+
+.w-bohemian .w-boho__dot--0 {
+  fill: var(--terracotta);
+  opacity: 0.55;
+}
+.w-bohemian .w-boho__dot--1 {
+  fill: var(--mustard);
+  opacity: 0.7;
+}
+.w-bohemian .w-boho__dot--2 {
+  fill: var(--sage);
+  opacity: 0.7;
+}
+
+.w-bohemian .w-boho__arch-shadow {
+  fill: rgb(120 70 40 / 0.18);
+}
+
+.w-bohemian .w-boho__arch-frame {
+  fill: none;
+  stroke: #e2c49c;
+  stroke-width: 14;
+}
+
+.w-bohemian .w-boho__sun {
+  fill: #f4b942;
+}
+
+.w-bohemian .w-boho__sun-rays {
+  fill: #f7cf6a;
+}
+
+.w-bohemian[data-time='golden'] .w-boho__sun {
+  fill: #ef7f3a;
+}
+
+.w-bohemian[data-time='golden'] .w-boho__sun-rays {
+  fill: #f6a35a;
+}
+
+.w-bohemian .w-boho__hill--far {
+  fill: #b9c2a0;
+}
+
+.w-bohemian .w-boho__hill--near {
+  fill: #6f7f55;
+}
+
+.w-bohemian .w-boho__band--1 {
+  fill: var(--terracotta);
+}
+.w-bohemian .w-boho__band--2 {
+  fill: var(--rose);
+}
+.w-bohemian .w-boho__band--3 {
+  fill: var(--mustard);
+}
+.w-bohemian .w-boho__band--4 {
+  fill: var(--sage);
+}
+
+.w-bohemian .w-boho__dowel {
+  stroke: #7a4a2a;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.w-bohemian .w-boho__cord {
+  fill: none;
+  stroke: #a07a52;
+  stroke-width: 2;
+}
+
+.w-bohemian .w-boho__strands {
+  fill: none;
+  stroke: #f7efe2;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.w-bohemian .w-boho__knots circle {
+  fill: #efe1c9;
+  stroke: #c9ab84;
+  stroke-width: 2;
+}
+
+.w-bohemian .w-boho__fringe {
+  fill: none;
+  stroke: #efe1c9;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: w-boho-fringe 3.5s ease-in-out infinite;
+}
+
+@keyframes w-boho-fringe {
+  50% {
+    transform: skewX(4deg);
+  }
+}
+
+.w-bohemian .w-boho__stem {
+  fill: none;
+  stroke: #b89a6c;
+  stroke-width: 2.5;
+}
+
+.w-bohemian .w-boho__plume {
+  fill: none;
+  stroke: #e9d6b4;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.w-bohemian .w-boho__vase {
+  fill: var(--terracotta);
+}
+
+.w-bohemian .w-boho__vase-line {
+  stroke: var(--cream);
+  stroke-width: 4;
+  stroke-dasharray: 2 8;
+  stroke-linecap: round;
+}
+
+.w-bohemian .w-boho__leaf path:first-child {
+  fill: #5f7f4a;
+}
+
+.w-bohemian .w-boho__vein {
+  fill: none;
+  stroke: #9fb985;
+  stroke-width: 2;
+}
+
+.w-bohemian .w-boho__runner-edge {
+  stroke: var(--rust);
+  stroke-width: 4;
+}
+
+.w-bohemian .w-boho__tassels {
+  stroke: var(--mustard);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.w-bohemian .w-boho__card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem 1.4rem;
+  border-radius: 180px 180px 18px 18px;
+  padding-top: 3rem;
+  background: #fbf3e7;
+  border: 2px dashed var(--terracotta);
+  box-shadow: 0 0 0 8px #fbf3e7, 0 20px 40px rgb(120 70 40 / 0.18);
+  text-align: center;
+}
+
+.w-bohemian .w-boho__kicker {
+  font-style: italic;
+  color: var(--rust);
+}
+
+.w-bohemian .w-boho__title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--terracotta);
+}
+
+.w-bohemian .w-boho__caption {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.w-bohemian .w-boho__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.w-bohemian .w-boho__controls button {
+  padding: 0 1rem;
+  border: 2px solid var(--terracotta);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.w-bohemian .w-boho__controls button:hover {
+  background: var(--terracotta);
+  color: #fff8ef;
+}
+
+.w-bohemian .w-boho__status {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5a3626;
+}
+
+@media (max-width: 860px) {
+  .w-bohemian .w-boho__layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+  .w-bohemian .w-boho__scene svg {
+    max-height: 58vh;
+  }
+  .w-bohemian .w-boho__card {
+    border-radius: 120px 120px 18px 18px;
+  }
+}
